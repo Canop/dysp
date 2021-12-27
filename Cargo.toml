@@ -1,0 +1,28 @@
+[package]
+name = "dysp"
+version = "0.1.0"
+authors = ["dys"]
+edition = "2021"
+
+[dependencies]
+console_error_panic_hook = "0.1"
+wasm-bindgen = "0.2"
+gloo = "0.5"
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+	'Attr',
+	'console',
+	'Document',
+	'DomTokenList', 
+	'Element',
+	"HtmlDivElement",
+	'HtmlElement',
+	'NamedNodeMap',
+	'Node',
+	'NodeList',
+	'Text',
+	'Window',
+]
+
