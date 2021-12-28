@@ -1,12 +1,13 @@
-
 mod app;
 mod editor;
 pub mod dom;
+mod lang;
 
 pub use {
     app::App,
     dom::{Append, DomElement},
     editor::*,
+    lang::*,
 };
 pub use {
     gloo::{
@@ -19,9 +20,6 @@ pub use {
         prelude::*,
         JsCast,
     },
-};
-use {
-    std::sync::Mutex,
 };
 
 static mut APP: Option<App> = None;
@@ -41,5 +39,6 @@ fn main() {
     console_error_panic_hook::set_once();
     log!("test from main");
     let mut app = App::new(&mut body()).expect("not to crash");
+    app.on_code_change().unwrap();
     set_app(app);
 }

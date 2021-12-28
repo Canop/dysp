@@ -1,7 +1,7 @@
 use crate::*;
 
 pub struct App {
-    editor: Editor,
+    pub editor: Editor,
 }
 
 impl Drop for App {
@@ -20,7 +20,18 @@ impl App {
     }
     pub fn on_code_change(&mut self) -> Result<(), JsValue> {
         let code = self.editor.get_code();
-        log!("new code: {:?}", &code);
+        match code.parse::<Program>() {
+            Ok(program) => {
+                log!("program ok");
+                let svg = program.compile();
+                self.editor.display_svg(svg);
+                self.editor.set_error(None);
+            }
+            Err(e) => {
+                warn!("error in program:", e.to_string());
+                self.editor.set_error(Some(e.to_string()));
+            }
+        }
         Ok(())
     }
 }
