@@ -44,9 +44,6 @@ impl Editor {
 
         let player = dom::div().with_class("player");
         let canvas = dom::div().with_class("canvas");
-        handlers.push(EventListener::new(&canvas, "click", move |_event| {
-            log!("click in canvas");
-        }));
         handlers.push(EventListener::new(&canvas, "mousemove", move |event| {
             let app = app();
             let rect = app.editor.canvas.get_bounding_client_rect();

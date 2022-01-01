@@ -1,10 +1,14 @@
 
+Not really a public thing. And not something pretty.
+
+No licencing decided yet.
+
 ## serve for dev
 
 trunk serve
 
 ## build
 
-trunk build --release ???
+./deploy.sh
 
 
